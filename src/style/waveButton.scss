@@ -1,0 +1,74 @@
+$wavesColor: #4973ff;
+$siteBackground: rgb(15, 22, 36);
+
+.wave-button {
+	width: 100%;
+	max-width: 280px;
+	height: 60px;
+	display: flex;
+	border-radius: 0 0 10px 10px;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.6s ease 0s;
+	position: relative;
+	text-decoration: none;
+	overflow: hidden;
+	&:hover {
+		border-radius: 10px;
+		transition: box-shadow 0.6s ease 0.1s;
+		box-shadow: 0 0 20px rgba($color: $wavesColor, $alpha: 0.5);
+	}
+	&:hover &__waves {
+		top: -50px;
+	}
+	&__text {
+		color: #fff;
+		letter-spacing: 3px;
+		position: relative;
+		z-index: 3;
+		font-size: 20px;
+		font-weight: 400;
+		text-shadow: rgba(150, 222, 255, 0.75) 0px 0 10px;
+	}
+
+	&__waves {
+		position: absolute;
+		width: 100%;
+		max-width: 280px;
+		top: 0;
+		left: 0;
+		transition: top 0.6s ease 0s;
+		height: 280px;
+		background-color: $wavesColor;
+		box-shadow: inset 0 0 50px rgba($color: #000000, $alpha: 0.5);
+		&::after,
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 700px;
+			height: 250%;
+			transform: translate3d(-50%, -96%, 0);
+		}
+		&::before {
+			background: rgba($color: $siteBackground, $alpha: 1);
+			border-radius: 48%;
+			z-index: 2;
+			animation: waves 5s infinite linear;
+		}
+		&::after {
+			background: rgba($color: #000000, $alpha: 0.5);
+			border-radius: 44%;
+			animation: waves 10s infinite linear;
+		}
+		@keyframes waves {
+			0% {
+				transform: translate3d(-50%, -96%, 0);
+			}
+			100% {
+				transform: translate3d(-50%, -96%, 0) rotate(360deg);
+			}
+		}
+	}
+}
